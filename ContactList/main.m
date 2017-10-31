@@ -7,11 +7,37 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "InputCollector.h"
+#import "Contact.h"
+#import "ContactList.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
+
+        bool run = YES;
+        
+        ContactList *contactList = [[ContactList alloc]init];
+        
+        
+        
+        while (run == YES) {
+            
+        
+        InputCollector *inputCollector = [[InputCollector alloc]init];
+        Contact *contact = [[Contact alloc]init];
+
+        
+        NSString *optionInput = [inputCollector inputForPrompt:@"The menu: \nWhat would you like do next? \nnew - Create a new contact \nlist - List all contacts \nquit - Exit Application\nSelect an option: "];
+        
+            if ([optionInput  isEqual: @"quit"]) {
+                run = NO;
+            } else if ([optionInput  isEqual: @"new"]) {
+                contact.name = [inputCollector inputForPrompt:@"Please enter full name."];
+                contact.email = [inputCollector inputForPrompt:@"Please enter e-mail."];
+                
+                }
+        
+        }
     }
     return 0;
 }
