@@ -19,4 +19,14 @@
     return self;
 }
 
+-(void)addContact:(Contact *)newContact {
+    [self.contactStorage addObject:newContact];
+}
+
+- (void) printContacts {
+    for (Contact* contact in self.contactStorage) {
+        NSLog(@"\n%lu: <%@> (%@)", [self.contactStorage indexOfObject:contact], contact.name, contact.email);
+    }
+}
+
 @end
